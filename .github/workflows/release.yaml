@@ -1,0 +1,36 @@
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.20.0, v1.22.5
+
+name: Create Release
+
+jobs:
+  download_binaries:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Download binaries  
+        run: python fetch_binaries.py
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: binaries.tar.gz
+          path: binaries.tar.gz
+
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_unmatched_files: true
+          name: Release ${{ github.ref_name }}
+          tag_name: ${{ github.ref_name }}
+          draft: false
+          files: |
+            binaries.tar.gz

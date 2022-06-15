@@ -1,0 +1,72 @@
+kube_version: 1.22.5
+
+components:
+  calicoctl:
+    version: "v3.20.3"
+    download_url: "https://github.com/projectcalico/calicoctl/releases/download/VERSION/calicoctl-linux-amd64"
+    filename: "calicoctl"
+    unarchive: False
+    file_to_extract: ""
+
+  containerd:
+    version: "1.5.8"
+    download_url: "https://github.com/containerd/containerd/releases/download/vVERSION/containerd-VERSION-linux-amd64.tar.gz"
+    filename: "containerd.tar.gz"
+    unarchive: True
+    file_to_extract: "bin/containerd"
+  
+  crictl:
+    version: "v1.22.0"
+    download_url: "https://github.com/kubernetes-sigs/cri-tools/releases/download/VERSION/crictl-VERSION-linux-amd64.tar.gz"
+    filename: "crictl.tar.gz"
+    unarchive: True
+    file_to_extract: "crictl"
+    
+  etcd:
+    version: "v3.5.0"
+    download_url: "https://github.com/coreos/etcd/releases/download/VERSION/etcd-VERSION-linux-amd64.tar.gz"
+    filename: "etcd.tar.gz"
+    unarchive: True
+    file_to_extract: "" # Condition set on python script, untar() does not support extract list of files. etcdctl is embbeded
+
+  helm:
+    version: "v3.7.1"
+    download_url: "https://get.helm.sh/helm-VERSION-linux-amd64.tar.gz"
+    filename: "helm.tar.gz"
+    unarchive: True
+    file_to_extract: "linux-amd64/helm"
+
+  kubelet:
+    version: "1.22.5"
+    download_url: "https://storage.googleapis.com/kubernetes-release/release/vVERSION/bin/linux/amd64/kubelet"
+    filename: "kubelet"
+    unarchive: False
+    file_to_extract: "linux-amd64/helm"
+    
+  kubeadm:
+    version: "1.22.5"
+    download_url: "https://storage.googleapis.com/kubernetes-release/release/vVERSION/bin/linux/amd64/kubeadm"
+    filename: "kubeadm"
+    unarchive: False
+    file_to_extract: ""
+
+  kubectl:
+    version: "1.22.5"
+    download_url: "https://storage.googleapis.com/kubernetes-release/release/vVERSION/bin/linux/amd64/kubectl"
+    filename: "kubectl"
+    unarchive: False
+    file_to_extract: ""
+
+  runc:
+    version: "v1.0.3"
+    download_url: "https://github.com/opencontainers/runc/releases/download/VERSION/runc.amd64"
+    filename: "runc"
+    unarchive: False
+    file_to_extract: ""
+
+  nerdctl:
+    version: "0.15.0"
+    download_url: "https://github.com/containerd/nerdctl/releases/download/vVERSION/nerdctl-VERSION-linux-amd64.tar.gz"
+    filename: "nerdctl.tar.gz"
+    unarchive: True
+    file_to_extract: "nerdctl"
