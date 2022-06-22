@@ -10,9 +10,7 @@ with open('versions.yml') as vFile:
     data    = yaml.safe_load(vFile)["components"]
     bin_dir =  "usr/local/bin/"
 
-    # Iterate over versions.yml items. k = key, v = value
     for k, v in data.items():
-
         # Parse Download URL with good version
         download_url = v["download_url"].replace("VERSION", v["version"])
 
@@ -26,7 +24,6 @@ with open('versions.yml') as vFile:
         if v["unarchive"] == True:
             mytar = tarfile.open('%s%s' % (bin_dir, filename))
             if k == "etcd":
-                binaries = ["etcd", "etcdctl"]
                 mytar.extract("etcd-%s-linux-amd64/etcd" % (v["version"]), path=bin_dir)
                 mytar.extract("etcd-%s-linux-amd64/etcdctl" % (v["version"]), path=bin_dir)
             else:
@@ -34,5 +31,23 @@ with open('versions.yml') as vFile:
             mytar.close()
             os.remove('%s%s' % (bin_dir, filename))
 
-# Cleanup unused dirs and compact
-os.system('sh scripts/cleanup.sh')
+    # Cleanup unused dirs and compact
+    os.system('sh scripts/cleanup.sh')
+    
+    with tarfile.open("control_plane_binaries.tar.gz", "w") as cptar:
+        for k, v in data.items():
+            ## Create tar file for control plane
+            if v["download_on_control_plane"] == True:
+                if k == "etcd":
+                    cptar.add("%s/etcd" % (bin_dir))
+                    cptar.add("%s/etcdctl" % (bin_dir))
+                else:
+                    cptar.add("%s/%s" % (bin_dir, k))
+        cptar.close()
+
+    with tarfile.open("node_binaries.tar.gz", "w") as nodetar:
+        for k, v in data.items():
+            ## Create tar file for nodes
+            if v["download_on_node"] == True:
+                nodetar.add("%s/%s" % (bin_dir, k))
+        nodetar.close()

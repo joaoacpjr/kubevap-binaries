@@ -17,5 +17,5 @@ do
     rm -rf $dir;
 done
 
-# tar binaries
-tar -czvf binaries.tar.gz usr/
+# Set exec permission
+find $basedir -type f -exec chmod +x {} \;

@@ -7,6 +7,8 @@ components:
     filename: "calicoctl"
     unarchive: False
     file_to_extract: ""
+    download_on_control_plane: True
+    download_on_node: True
 
   containerd:
     version: "1.5.8"
@@ -14,20 +16,26 @@ components:
     filename: "containerd.tar.gz"
     unarchive: True
     file_to_extract: "bin/containerd"
-  
+    download_on_control_plane: True
+    download_on_node: True
+
   crictl:
     version: "v1.22.0"
     download_url: "https://github.com/kubernetes-sigs/cri-tools/releases/download/VERSION/crictl-VERSION-linux-amd64.tar.gz"
     filename: "crictl.tar.gz"
     unarchive: True
     file_to_extract: "crictl"
-    
+    download_on_control_plane: True
+    download_on_node: True
+
   etcd:
     version: "v3.5.0"
     download_url: "https://github.com/coreos/etcd/releases/download/VERSION/etcd-VERSION-linux-amd64.tar.gz"
     filename: "etcd.tar.gz"
     unarchive: True
     file_to_extract: "" # Condition set on python script, untar() does not support extract list of files. etcdctl is embbeded
+    download_on_control_plane: True
+    download_on_node: False
 
   helm:
     version: "v3.7.1"
@@ -35,6 +43,8 @@ components:
     filename: "helm.tar.gz"
     unarchive: True
     file_to_extract: "linux-amd64/helm"
+    download_on_control_plane: True
+    download_on_node: False
 
   kubelet:
     version: "1.22.5"
@@ -42,13 +52,17 @@ components:
     filename: "kubelet"
     unarchive: False
     file_to_extract: "linux-amd64/helm"
-    
+    download_on_control_plane: True
+    download_on_node: True
+
   kubeadm:
     version: "1.22.5"
     download_url: "https://storage.googleapis.com/kubernetes-release/release/vVERSION/bin/linux/amd64/kubeadm"
     filename: "kubeadm"
     unarchive: False
     file_to_extract: ""
+    download_on_control_plane: True
+    download_on_node: False
 
   kubectl:
     version: "1.22.5"
@@ -56,6 +70,8 @@ components:
     filename: "kubectl"
     unarchive: False
     file_to_extract: ""
+    download_on_control_plane: True
+    download_on_node: False
 
   runc:
     version: "v1.0.3"
@@ -63,6 +79,8 @@ components:
     filename: "runc"
     unarchive: False
     file_to_extract: ""
+    download_on_control_plane: True
+    download_on_node: True
 
   nerdctl:
     version: "0.15.0"
@@ -70,3 +88,5 @@ components:
     filename: "nerdctl.tar.gz"
     unarchive: True
     file_to_extract: "nerdctl"
+    download_on_control_plane: True
+    download_on_node: True
