@@ -33,4 +33,5 @@ jobs:
           tag_name: ${{ github.ref_name }}
           draft: false
           files: |
-            binaries.tar.gz
+            node_binaries.tar.gz
+            control_plane_binaries.tar.gz
