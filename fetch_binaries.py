@@ -34,7 +34,7 @@ with open('versions.yml') as vFile:
     # Cleanup unused dirs and compact
     os.system('sh scripts/cleanup.sh')
     
-    with tarfile.open("control_plane_binaries.tar.gz", "w") as cptar:
+    with tarfile.open("control_plane_binaries.tar.gz", "w:gz") as cptar:
         for k, v in data.items():
             ## Create tar file for control plane
             if v["download_on_control_plane"] == True:
@@ -45,9 +45,9 @@ with open('versions.yml') as vFile:
                     cptar.add("%s/%s" % (bin_dir, k))
         cptar.close()
 
-    with tarfile.open("node_binaries.tar.gz", "w") as nodetar:
+    with tarfile.open("node_binaries.tar.gz", "w:gz") as nodetar:
         for k, v in data.items():
             ## Create tar file for nodes
             if v["download_on_node"] == True:
-                nodetar.add("%s/%s" % (bin_dir, k))
+                nodetar.add("%s/%s" % (bin_dir, k)) 
         nodetar.close()
