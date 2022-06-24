@@ -56,8 +56,8 @@ with open('versions.yml') as vFile:
             ## Create tar file for nodes
             if v["download_on_node"] == True:
                 if k == "containerd":
-                    cptar.add("%s/containerd" % (bin_dir))
-                    cptar.add("%s/ctr" % (bin_dir))
+                    nodetar.add("%s/containerd" % (bin_dir))
+                    nodetar.add("%s/ctr" % (bin_dir))
                 else:
                     nodetar.add("%s/%s" % (bin_dir, k)) 
         nodetar.close()
