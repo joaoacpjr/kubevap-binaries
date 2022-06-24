@@ -46,7 +46,7 @@ with open('versions.yml') as vFile:
                     cptar.add("%s/etcdctl" % (bin_dir))
                 elif k == "containerd":
                     cptar.add("%s/containerd" % (bin_dir))
-                    cptar.add("%s/cri" % (bin_dir))
+                    cptar.add("%s/ctr" % (bin_dir))
                 else:
                     cptar.add("%s/%s" % (bin_dir, k))
         cptar.close()
@@ -57,7 +57,7 @@ with open('versions.yml') as vFile:
             if v["download_on_node"] == True:
                 if k == "containerd":
                     cptar.add("%s/containerd" % (bin_dir))
-                    cptar.add("%s/cri" % (bin_dir))
+                    cptar.add("%s/ctr" % (bin_dir))
                 else:
                     nodetar.add("%s/%s" % (bin_dir, k)) 
         nodetar.close()
