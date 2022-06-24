@@ -15,7 +15,7 @@ components:
     download_url: "https://github.com/containerd/containerd/releases/download/vVERSION/containerd-VERSION-linux-amd64.tar.gz"
     filename: "containerd.tar.gz"
     unarchive: True
-    file_to_extract: "bin/containerd"
+    file_to_extract: "" # Condition set on python script, untar() does not support extract list of files. Needs cri CLI as well.
     download_on_control_plane: True
     download_on_node: True
 

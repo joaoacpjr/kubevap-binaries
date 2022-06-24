@@ -26,6 +26,9 @@ with open('versions.yml') as vFile:
             if k == "etcd":
                 mytar.extract("etcd-%s-linux-amd64/etcd" % (v["version"]), path=bin_dir)
                 mytar.extract("etcd-%s-linux-amd64/etcdctl" % (v["version"]), path=bin_dir)
+            elif k == "containerd":
+                mytar.extract("bin/containerd", path=bin_dir)
+                mytar.extract("bin/cri", path=bin_dir)
             else:
                 mytar.extract(v["file_to_extract"], path=bin_dir)
             mytar.close()
@@ -41,6 +44,9 @@ with open('versions.yml') as vFile:
                 if k == "etcd":
                     cptar.add("%s/etcd" % (bin_dir))
                     cptar.add("%s/etcdctl" % (bin_dir))
+                elif k == "containerd":
+                    cptar.add("%s/containerd" % (bin_dir))
+                    cptar.add("%s/cri" % (bin_dir))
                 else:
                     cptar.add("%s/%s" % (bin_dir, k))
         cptar.close()
@@ -49,5 +55,9 @@ with open('versions.yml') as vFile:
         for k, v in data.items():
             ## Create tar file for nodes
             if v["download_on_node"] == True:
-                nodetar.add("%s/%s" % (bin_dir, k)) 
+                if k == "containerd":
+                    cptar.add("%s/containerd" % (bin_dir))
+                    cptar.add("%s/cri" % (bin_dir))
+                else:
+                    nodetar.add("%s/%s" % (bin_dir, k)) 
         nodetar.close()
