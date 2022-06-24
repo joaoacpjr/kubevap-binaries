@@ -28,7 +28,7 @@ with open('versions.yml') as vFile:
                 mytar.extract("etcd-%s-linux-amd64/etcdctl" % (v["version"]), path=bin_dir)
             elif k == "containerd":
                 mytar.extract("bin/containerd", path=bin_dir)
-                mytar.extract("bin/cri", path=bin_dir)
+                mytar.extract("bin/ctr", path=bin_dir)
             else:
                 mytar.extract(v["file_to_extract"], path=bin_dir)
             mytar.close()
