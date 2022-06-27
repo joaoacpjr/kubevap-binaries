@@ -29,6 +29,7 @@ with open('versions.yml') as vFile:
             elif k == "containerd":
                 mytar.extract("bin/containerd", path=bin_dir)
                 mytar.extract("bin/ctr", path=bin_dir)
+                mytar.extract("bin/containerd-shim-runc-v2", path=bin_dir)
             else:
                 mytar.extract(v["file_to_extract"], path=bin_dir)
             mytar.close()
@@ -47,6 +48,7 @@ with open('versions.yml') as vFile:
                 elif k == "containerd":
                     cptar.add("%s/containerd" % (bin_dir))
                     cptar.add("%s/ctr" % (bin_dir))
+                    cptar.add("%s/containerd-shim-runc-v2" % (bin_dir))
                 else:
                     cptar.add("%s/%s" % (bin_dir, k))
         cptar.close()
@@ -58,6 +60,7 @@ with open('versions.yml') as vFile:
                 if k == "containerd":
                     nodetar.add("%s/containerd" % (bin_dir))
                     nodetar.add("%s/ctr" % (bin_dir))
+                    nodetar.add("%s/containerd-shim-runc-v2" % (bin_dir))
                 else:
                     nodetar.add("%s/%s" % (bin_dir, k)) 
         nodetar.close()

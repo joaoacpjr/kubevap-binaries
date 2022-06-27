@@ -3,7 +3,7 @@
 basedir="usr/local/bin/"
 
 # move binaries from their original folder
-for binary in etcd etcdctl containerd ctr helm;
+for binary in etcd etcdctl containerd containerd-shim-runc-v2 ctr helm;
 do
     for b in $(find $basedir* -type f -name $binary);
         do mv $b $basedir;
