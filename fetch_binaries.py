@@ -38,29 +38,16 @@ with open('versions.yml') as vFile:
     # Cleanup unused dirs and compact
     os.system('sh scripts/cleanup.sh')
     
-    with tarfile.open("control_plane_binaries.tar.gz", "w:gz") as cptar:
+    with tarfile.open("binaries.tar.gz", "w:gz") as mytar:
         for k, v in data.items():
-            ## Create tar file for control plane
-            if v["download_on_control_plane"] == True:
-                if k == "etcd":
-                    cptar.add("%s/etcd" % (bin_dir))
-                    cptar.add("%s/etcdctl" % (bin_dir))
-                elif k == "containerd":
-                    cptar.add("%s/containerd" % (bin_dir))
-                    cptar.add("%s/ctr" % (bin_dir))
-                    cptar.add("%s/containerd-shim-runc-v2" % (bin_dir))
-                else:
-                    cptar.add("%s/%s" % (bin_dir, k))
-        cptar.close()
-
-    with tarfile.open("node_binaries.tar.gz", "w:gz") as nodetar:
-        for k, v in data.items():
-            ## Create tar file for nodes
-            if v["download_on_node"] == True:
-                if k == "containerd":
-                    nodetar.add("%s/containerd" % (bin_dir))
-                    nodetar.add("%s/ctr" % (bin_dir))
-                    nodetar.add("%s/containerd-shim-runc-v2" % (bin_dir))
-                else:
-                    nodetar.add("%s/%s" % (bin_dir, k)) 
-        nodetar.close()
+            ## Create tar file
+            if k == "etcd":
+                mytar.add("%s/etcd" % (bin_dir))
+                mytar.add("%s/etcdctl" % (bin_dir))
+            elif k == "containerd":
+                mytar.add("%s/containerd" % (bin_dir))
+                mytar.add("%s/ctr" % (bin_dir))
+                mytar.add("%s/containerd-shim-runc-v2" % (bin_dir))
+            else:
+                mytar.add("%s/%s" % (bin_dir, k))
+        mytar.close()

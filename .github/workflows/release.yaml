@@ -17,12 +17,6 @@ jobs:
       - name: Download binaries  
         run: python fetch_binaries.py
 
-      - name: Archive artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: binaries.tar.gz
-          path: binaries.tar.gz
-
       - name: Upload Release Asset
         id: upload-release-asset 
         uses: softprops/action-gh-release@v1
@@ -33,5 +27,4 @@ jobs:
           tag_name: ${{ github.ref_name }}
           draft: false
           files: |
-            node_binaries.tar.gz
-            control_plane_binaries.tar.gz
+            binaries.tar.gz

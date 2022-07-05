@@ -25,8 +25,6 @@ components:
     filename: "crictl.tar.gz"
     unarchive: True
     file_to_extract: "crictl"
-    download_on_control_plane: True
-    download_on_node: True
 
   etcd:
     version: "v3.5.0"
@@ -34,8 +32,6 @@ components:
     filename: "etcd.tar.gz"
     unarchive: True
     file_to_extract: "" # Condition set on python script, untar() does not support extract list of files. etcdctl is embbeded
-    download_on_control_plane: True
-    download_on_node: False
 
   helm:
     version: "v3.7.1"
@@ -43,8 +39,6 @@ components:
     filename: "helm.tar.gz"
     unarchive: True
     file_to_extract: "linux-amd64/helm"
-    download_on_control_plane: True
-    download_on_node: False
 
   kubelet:
     version: "1.22.5"
@@ -52,8 +46,6 @@ components:
     filename: "kubelet"
     unarchive: False
     file_to_extract: "linux-amd64/helm"
-    download_on_control_plane: True
-    download_on_node: True
 
   kubeadm:
     version: "1.22.5"
@@ -61,8 +53,6 @@ components:
     filename: "kubeadm"
     unarchive: False
     file_to_extract: ""
-    download_on_control_plane: True
-    download_on_node: False
 
   kubectl:
     version: "1.22.5"
@@ -70,8 +60,6 @@ components:
     filename: "kubectl"
     unarchive: False
     file_to_extract: ""
-    download_on_control_plane: True
-    download_on_node: False
 
   runc:
     version: "v1.0.3"
@@ -79,8 +67,6 @@ components:
     filename: "runc"
     unarchive: False
     file_to_extract: ""
-    download_on_control_plane: True
-    download_on_node: True
 
   nerdctl:
     version: "0.15.0"
@@ -88,5 +74,3 @@ components:
     filename: "nerdctl.tar.gz"
     unarchive: True
     file_to_extract: "nerdctl"
-    download_on_control_plane: True
-    download_on_node: True
