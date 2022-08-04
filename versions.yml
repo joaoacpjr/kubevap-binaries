@@ -3,7 +3,7 @@ kube_version: 1.23.7
 components:
   calicoctl:
     version: "v3.22.3"
-    download_url: "https://github.com/projectcalico/calicoctl/releases/download/VERSION/calicoctl-linux-amd64"
+    download_url: "https://github.com/projectcalico/calico/releases/download/VERSION/calicoctl-linux-amd64"
     filename: "calicoctl"
     unarchive: False
     file_to_extract: ""
