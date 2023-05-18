@@ -11,7 +11,7 @@ components:
     download_on_node: True
 
   containerd:
-    version: "1.7.0"
+    version: "1.7.1"
     download_url: "https://github.com/containerd/containerd/releases/download/vVERSION/containerd-VERSION-linux-amd64.tar.gz"
     filename: "containerd.tar.gz"
     unarchive: True
@@ -20,49 +20,49 @@ components:
     download_on_node: True
 
   crictl:
-    version: "v1.26.0"
+    version: "v1.27.0"
     download_url: "https://github.com/kubernetes-sigs/cri-tools/releases/download/VERSION/crictl-VERSION-linux-amd64.tar.gz"
     filename: "crictl.tar.gz"
     unarchive: True
     file_to_extract: "crictl"
 
   etcd:
-    version: "v3.5.6"
+    version: "v3.5.9"
     download_url: "https://github.com/coreos/etcd/releases/download/VERSION/etcd-VERSION-linux-amd64.tar.gz"
     filename: "etcd.tar.gz"
     unarchive: True
     file_to_extract: "" # Condition set on python script, untar() does not support extract list of files. etcdctl is embbeded
 
   helm:
-    version: "v3.11.3"
+    version: "v3.12.0"
     download_url: "https://get.helm.sh/helm-VERSION-linux-amd64.tar.gz"
     filename: "helm.tar.gz"
     unarchive: True
     file_to_extract: "linux-amd64/helm"
 
   kubelet:
-    version: "1.26.4"
+    version: "1.27.4"
     download_url: "https://storage.googleapis.com/kubernetes-release/release/vVERSION/bin/linux/amd64/kubelet"
     filename: "kubelet"
     unarchive: False
     file_to_extract: "linux-amd64/helm"
 
   kubeadm:
-    version: "1.26.4"
+    version: "1.27.4"
     download_url: "https://storage.googleapis.com/kubernetes-release/release/vVERSION/bin/linux/amd64/kubeadm"
     filename: "kubeadm"
     unarchive: False
     file_to_extract: ""
 
   kubectl:
-    version: "1.26.4"
+    version: "1.27.4"
     download_url: "https://storage.googleapis.com/kubernetes-release/release/vVERSION/bin/linux/amd64/kubectl"
     filename: "kubectl"
     unarchive: False
     file_to_extract: ""
 
   runc:
-    version: "v1.1.4"
+    version: "v1.1.7"
     download_url: "https://github.com/opencontainers/runc/releases/download/VERSION/runc.amd64"
     filename: "runc"
     unarchive: False
